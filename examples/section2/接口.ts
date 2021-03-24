@@ -16,7 +16,10 @@ interface Square {
 }
 interface SquareConfig {
     color?: string,
-    width?: number
+    width?: number,
+
+    [propName: string] : any
+
 }
 
 function createSquare(config: SquareConfig): Square {
@@ -37,3 +40,9 @@ interface Point {
 }
 let p1: Point = {x:10, y:20} // 只允许在这个时候创建
 // p1.x = 100 此时会报错
+
+// let mySquare = createSquare({colour: 'black', width: 22} as SquareConfig )
+// let mySquare = createSquare({colour: 'black', width: 22})
+
+let SquareOptions = {colour: 'black', width: 22}
+let mySquare = createSquare(SquareOptions)
